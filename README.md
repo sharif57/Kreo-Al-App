@@ -1,78 +1,92 @@
 # Kreo AI
 
-Kreo AI is a React Native application that allows users to:
+Kreo AI is an Expo React Native application that enables users to:
 
 - 🎨 Generate images from text prompts (Text to Image)
 - 🎥 Convert images into AI-generated videos (Image to Video)
 
 ## Features
 
-- Text-to-Image Generation
-- Image-to-Video Generation
-- Simple and User-Friendly Interface
-- Cross-platform (Android & iOS)
+- AI Text-to-Image Generation
+- AI Image-to-Video Generation
+- Clean and Modern UI
+- Cross-platform (Android, iOS & Web)
+- Built with Expo
 
 ## Tech Stack
 
+- Expo
 - React Native
-- JavaScript / TypeScript
+- Expo Router (or React Navigation)
+- TypeScript
 - Axios
-- React Navigation
+
+## Prerequisites
+
+- Node.js (v18+)
+- npm or Yarn
+- Expo Go app (Android/iOS)
 
 ## Installation
 
-1. Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/sharif57/Kreo-Al-App.git
+cd kreo-ai
 ```
 
-2. Install dependencies
+Install dependencies:
 
 ```bash
 npm install
 # or
-yarn install
+yarn
 ```
 
-3. Start Metro
+## Start Development Server
 
 ```bash
-npm start
+npx expo start
 ```
 
-4. Run the app
+Run the app:
+
+- Press **a** → Android Emulator
+- Press **i** → iOS Simulator (macOS only)
+- Press **w** → Web
+- Or scan the QR code using **Expo Go**.
+
+## Build
 
 Android:
 
 ```bash
-npm run android
+eas build --platform android
 ```
 
 iOS:
 
 ```bash
-npm run ios
+eas build --platform ios
 ```
 
 ## Project Structure
 
 ```
-src/
- ├── components/
- ├── screens/
- ├── services/
- ├── navigation/
- ├── assets/
- └── utils/
+.
+├── app/
+├── assets/
+├── components/
+├── constants/
+├── hooks/
+├── services/
+├── utils/
+├── app.json
+├── package.json
+└── README.md
 ```
-
-## Requirements
-
-- Node.js
-- React Native CLI
-- Android Studio / Xcode
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
