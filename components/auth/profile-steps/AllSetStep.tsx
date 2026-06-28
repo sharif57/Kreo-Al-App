@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { SymbolView } from 'expo-symbols';
+import { StyleSheet, Text, View } from 'react-native';
 
 export function AllSetStep() {
   return (
