@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { AdvancedSettingsAccordion } from '@/components/create/AdvancedSettingsAccordion';
+import { PromptInput } from '@/components/create/PromptInput';
+import { UploadBlock } from '@/components/create/UploadBlock';
 import { useAppDispatch } from '@/store';
 import { generateMedia } from '@/store/generationSlice';
-import { UploadBlock } from '@/components/create/UploadBlock';
-import { PromptInput } from '@/components/create/PromptInput';
-import { AdvancedSettingsAccordion } from '@/components/create/AdvancedSettingsAccordion';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { SymbolView } from 'expo-symbols';
+import { useState } from 'react';
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CreateToolScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -18,7 +18,7 @@ export default function CreateToolScreen() {
   const handleGenerate = () => {
     // Determine type based on id
     const genType = (id === 'video-to-video' || id === 'image-to-video') ? 'video' : 'image';
-    
+
     // Dispatch generation
     dispatch(generateMedia({
       type: genType,
@@ -26,7 +26,7 @@ export default function CreateToolScreen() {
       ratio: '1:1',
       model: 'Flux.1 (Snel)',
       style: 'Default'
-    }));
+    }) as any);
 
     // Skip the progress page and go straight to result
     router.replace({ pathname: '/result', params: { title: title || 'Creation' } });
@@ -55,8 +55,8 @@ export default function CreateToolScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-[#121212]">
-      <KeyboardAvoidingView 
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         className="flex-1"
       >
         {/* Header */}
@@ -67,14 +67,14 @@ export default function CreateToolScreen() {
           <Text className="text-white text-[18px] font-bold">{title}</Text>
         </View>
 
-        <ScrollView 
+        <ScrollView
           className="flex-1 px-4 pt-4"
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
           {/* Upload Blocks */}
           {hasReferenceVideo && (
-            <UploadBlock 
+            <UploadBlock
               title="Upload Video"
               subtitle="Upload your reference video. Upload only MP4 and MOV Videos. File size < 100 MB, Resolution > 720p."
               iconName="video.badge.plus"
@@ -82,7 +82,7 @@ export default function CreateToolScreen() {
           )}
 
           {hasReferenceImage && (
-            <UploadBlock 
+            <UploadBlock
               title="Upload Image"
               subtitle="Upload your reference image. Upload only JPG and PNG images. File size < 10 MB, Dimension > 300px"
               iconName="photo.badge.plus"
@@ -90,7 +90,7 @@ export default function CreateToolScreen() {
           )}
 
           {hasBaseImage && (
-            <UploadBlock 
+            <UploadBlock
               title="Upload Image"
               subtitle="Upload your image. Upload only JPG and PNG images. File size < 10 MB, Dimension > 300px"
               iconName="photo.badge.plus"
@@ -106,7 +106,7 @@ export default function CreateToolScreen() {
 
         {/* Sticky Bottom Bar */}
         <View className="absolute bottom-0 left-0 right-0 p-4 bg-[#121212]">
-          <Pressable 
+          <Pressable
             onPress={handleGenerate}
             className="bg-white py-4 rounded-full flex-row justify-center items-center"
           >

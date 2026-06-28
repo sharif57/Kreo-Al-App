@@ -5,6 +5,7 @@ import { AuthOptionsScreen } from '@/components/auth/AuthOptionsScreen';
 import { EmailSignInScreen } from '@/components/auth/EmailSignInScreen';
 import { OTPVerificationScreen } from '@/components/auth/OTPVerificationScreen';
 import { VerifiedScreen } from '@/components/auth/VerifiedScreen';
+import { ProfileSetupFlow } from '@/components/auth/ProfileSetupFlow';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -14,7 +15,7 @@ import { Animated, Dimensions, Image, Pressable, StatusBar, Text, View } from 'r
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-type FlowState = 'splash1' | 'splash2' | 'onboarding1' | 'onboarding2' | 'trial_enabled' | 'paywall' | 'auth_options' | 'auth_email' | 'auth_otp' | 'auth_verified';
+type FlowState = 'splash1' | 'splash2' | 'onboarding1' | 'onboarding2' | 'profile_setup' | 'trial_enabled' | 'paywall' | 'auth_options' | 'auth_email' | 'auth_otp' | 'auth_verified';
 
 export default function OnboardingScreen() {
   const router = useRouter();
@@ -225,7 +226,7 @@ export default function OnboardingScreen() {
         {/* ==================== AUTH FLOW SCREENS ==================== */}
         {currentState === 'auth_options' && (
           <AuthOptionsScreen
-            onSkip={() => transitionTo('trial_enabled')}
+            onSkip={() => transitionTo('profile_setup')}
             onSelectEmail={() => transitionTo('auth_email')}
           />
         )}
@@ -251,7 +252,15 @@ export default function OnboardingScreen() {
 
         {currentState === 'auth_verified' && (
           <VerifiedScreen
-            onNext={() => transitionTo('trial_enabled')}
+            onNext={() => transitionTo('profile_setup')}
+          />
+        )}
+
+        {/* ==================== PROFILE SETUP FLOW ==================== */}
+        {currentState === 'profile_setup' && (
+          <ProfileSetupFlow
+            onComplete={() => transitionTo('trial_enabled')}
+            onSkip={() => transitionTo('trial_enabled')}
           />
         )}
 

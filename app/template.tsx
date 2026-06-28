@@ -52,7 +52,7 @@ export default function TemplateScreen() {
         ratio: '9:16',
         model: 'Flux.1 (Snel)',
         style: 'Default'
-      }));
+      }) as any);
 
       // Navigate directly to the result screen, bypassing the loading screen
       router.replace({ pathname: '/result', params: { title: title || 'Party Dance' } });

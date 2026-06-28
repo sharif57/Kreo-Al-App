@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, Pressable, LayoutAnimation, UIManager, Platform } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === 'android' && 
+  UIManager.setLayoutAnimationEnabledExperimental && 
+  !(globalThis as any).nativeFabricUIManager
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
