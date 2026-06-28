@@ -1,19 +1,19 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const tintColorLight = '#8B5CF6'; // Violet
+const tintColorDark = '#22D3EE';  // Neon Cyan
 
 export default {
   light: {
-    text: '#000',
-    background: '#fff',
+    text: '#090514',
+    background: '#FFFFFF',
     tint: tintColorLight,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#908BA8',
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#fff',
-    background: '#000',
+    text: '#E5E1F4',
+    background: '#090514',
     tint: tintColorDark,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#5E548E',
     tabIconSelected: tintColorDark,
   },
 };
